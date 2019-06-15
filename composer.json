@@ -1,0 +1,22 @@
+{
+    "name": "fdd/php-helper",
+    "type": "library",
+    "description": "test",
+    "license": "MIT",
+    "authors": [{
+        "name": "huo san",
+        "email": "314553951@qq.com"
+    }],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ford\\Escape\\": "src/Ford/Escape",
+            "Ford\\Fusion\\": "src/Ford/Fusion",
+            "Ford\\Focus\\": "src/Ford/Focus",
+            "Ford\\Fiesta\\": "src/Ford/Fiesta"
+        }
+    }
+}
