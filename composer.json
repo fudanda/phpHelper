@@ -12,7 +12,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Cribug\\": "src/"
+            "Cribug\\Qihengsan\\": "src/Cribug/Qihengsan"
         }
     }
 }

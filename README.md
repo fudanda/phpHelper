@@ -4,9 +4,6 @@ composer require fdd/php-helper
 
 
 
-
-
-
 $excelObj = (new \app\common\tools\ExcelExport());
 //单个导出
 $excelObj->exportTheExcel($filename, $xlsCell, $data);

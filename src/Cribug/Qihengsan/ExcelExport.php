@@ -19,6 +19,17 @@ class ExcelExport
     private $stodir = '../download/tmp/';
     private $destTmp = '../download/tmp/';
     private $zipFile = '';
+
+    /**
+     * 测试方法 返回数据
+     *
+     * @return void
+     */
+    public static function test()
+    {
+        return 'success';
+    }
+
     /**
      * 指定临时存储路径
      * 请确定这个路径有读写权限
