@@ -2,9 +2,9 @@
 
 require_once '../vendor/autoload.php';
 
-use Cribug\Qihengsan\ExcelExport;
+use Kuiba\Qihengsan\ExcelExport;
 
-$ExcelExport = new ExcelExport();
+// $ExcelExport = new ExcelExport();
 
-$a = $ExcelExport::test();
+$a = ExcelExport::test();
 var_dump($a);

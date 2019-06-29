@@ -1,5 +1,5 @@
 <?php
-namespace Cribug\Qihengsan;
+namespace Kuiba\Qihengsan;
 
 use \ZipArchive;
 
