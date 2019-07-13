@@ -1,13 +1,24 @@
 <?php
 
+namespace kuiba\Youmingkuang;
+
 /**
  * 对30 seconds of php code 的封装 方便自己使用
  */
 
-namespace kuiba\Youmingkuang;
-
 class Almighty
 {
+
+    /**
+     * 测试方法 返回数据
+     *
+     * @return void
+     */
+    public static function test()
+    {
+        return 'success';
+    }
+
     /**
      * 如果提供的函数对数组的所有元素都返回true，则返回true，否则返回false。
      */
@@ -336,6 +347,7 @@ class Almighty
 
     public static function countVowels($string)
     {
+        $matches = [];
         preg_match_all('/[aeiou]/i', $string, $matches);
 
         return count($matches[0]);
