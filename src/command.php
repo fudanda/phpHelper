@@ -4,7 +4,7 @@
  *
  */
 
-namespace Kuiba\layuiAdmin;
+namespace Kuiba\kuibaAdmin;
 
 use think\console\Input;
 use think\console\Output;
@@ -13,12 +13,14 @@ class Command extends \think\console\Command
 {
     public function configure()
     {
-        $this->setName('Haiwenxiang:install')
+        $this->setName('kuibaAdmin:install')
             ->setDescription('install admin');
     }
 
     public function execute(Input $input, Output $output)
     {
+        $output->writeln('Config file is exist');
+        die;
         $this->createConfig($output);
         $this->createStatic($output);
         $this->createMigrations($output);
