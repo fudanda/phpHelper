@@ -4,7 +4,7 @@
  *
  */
 
-namespace Kuiba\Haiwenxiang;
+namespace Kuiba\layuiAdmin;
 
 use think\console\Input;
 use think\console\Output;

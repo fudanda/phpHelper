@@ -9,7 +9,7 @@
  */
 
 \think\Console::addDefaultCommands([
-    \Kuiba\Haiwenxiang\Command::class,
+    \Kuiba\layuiAdmin\Command::class,
 ]);
 
 require_once 'route' . DIRECTORY_SEPARATOR . 'Route.php';
