@@ -1,6 +1,6 @@
 <?php
 
-namespace kuiba\Youmingkuang;
+namespace Kuiba\Youmingkuang;
 
 /**
  * 对30 seconds of php code 的封装 方便自己使用

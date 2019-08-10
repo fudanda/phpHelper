@@ -1,4 +1,5 @@
 <?php
+
 namespace Kuiba\Qihengsan;
 
 use \ZipArchive;
@@ -172,7 +173,7 @@ class ExcelExport
      */
     public function filename($filename)
     {
-        $this->filename = date('Y_m_d') . (string)$filename;
+        $this->filename = date('Y_m_d') . (string) $filename;
         if (!is_dir($this->stodir . $this->filename)) {
             mkdir($this->stodir . $this->filename, 0777, true);
         }
@@ -187,7 +188,7 @@ class ExcelExport
      */
     public function filter($filter)
     {
-        $this->filter = (array)$filter;
+        $this->filter = (array) $filter;
         return $this;
     }
 
