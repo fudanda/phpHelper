@@ -14,7 +14,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Kuiba\\layuiAdmin\\": "src"
+            "Kuiba\\kuibaAdmin\\": "src",
+            "Kuiba\\Qihengsan\\": "src/Kuiba/Qihengsan",
+            "Kuiba\\Youmingkuang\\": "src/Kuiba/Youmingkuang",
+            "Kuiba\\Haiwenxiang\\": "src/Kuiba/Haiwenxiang"
         },
         "files": [
             "src/helper.php"
