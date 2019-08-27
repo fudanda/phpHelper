@@ -10,9 +10,10 @@
 
 \think\Console::addDefaultCommands([
     \Kuiba\kuibaAdmin\Command::class,
+    \Kuiba\kuibaAdmin\Curd::class,
 ]);
 
-require_once 'route' . DIRECTORY_SEPARATOR . 'Route.php';
+// require_once 'route' . DIRECTORY_SEPARATOR . 'Route.php';
 
 if (!function_exists('scan_dir')) {
     /**
@@ -171,5 +172,47 @@ if (!function_exists('rand_uniqid')) {
     function rand_uniqid()
     {
         return md5(uniqid(rand()));
+    }
+}
+if (!function_exists('ajaxReturn')) {
+    function ajaxReturn($status = 0, $msg = '', $count = 0, $data = array())
+    {
+
+        $result = array(
+            'code' => $status,
+            'msg' => $msg,
+            'count' => $count,
+            'data' => $data,
+            'TOKEN' => session("TOKEN"),
+        );
+        echo (json_encode($result, JSON_UNESCAPED_UNICODE));
+    }
+}
+if (!function_exists('buildTree')) {
+    function buildTree($data = [], $child = true, $label = '', $parent = 0, $deep = 0, &$tree = [])
+    {
+        $treeParentKey = 'parent_id';
+        $treeTitleColumn = 'title';
+        if (empty($data)) {
+            return [];
+        }
+        foreach ($data as $key => $val) {
+            if ($val[$treeParentKey] == $parent) {
+                $val['label'] = str_repeat($label, $deep) . $val[$treeTitleColumn];
+                $val['deep']  = $deep;
+                $val['target']  = "_self";
+                if (!$child) {
+                    $tree[] = $val;
+                    buildTree($data, $child, $label, $val['id'], $deep + 1, $tree);
+                } else {
+                    $children = buildTree($data, $child, $label, $val['id'], $deep + 1);
+                    if ($children) {
+                        $val['child'] = $children;
+                    }
+                    $tree[] = $val;
+                }
+            }
+        }
+        return $tree;
     }
 }

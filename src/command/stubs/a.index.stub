@@ -1,0 +1,129 @@
+<div class="weadmin-body">
+    <div class="layui-card">
+        <div class="layui-card-header"></div>
+        <div class="layui-card-body">
+            <div class="layui-row saerchToll">
+                <button class="layui-btn " lay-event="add"
+                    onclick="WeAdminShow('添加分类','/admin/{%data_field%}/add')">添加</button>
+                <div class="layui-inline" style="margin-left:20px;">
+                    <input class="layui-input" name="{%data_field%}_title" id="srarchReload" placeholder="请输入标题"
+                        autocomplete="off">
+                </div>
+                <button class="layui-btn" lay-event="search" data-type="reload">
+                    <i class="layui-icon">&#xe615;</i> 搜索
+                </button>
+            </div>
+            <table class="layui-hide" id="list" lay-filter="list"></table>
+        </div>
+    </div>
+
+</div>
+<!-- 工具栏 -->
+<script type="text/html" id="toolbar">
+
+</script>
+<!-- 操作 -->
+<script type="text/html" id="actionbar">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+<script type="text/html" id="image">
+    <!-- <img src="{{d.{%data_field%}_litimg}}" alt="" sizes="" srcset=""> -->
+</script>
+
+<script type="text/javascript">
+    layui.use('table', function () {
+        var table = layui.table;
+        //数据绑定
+        table.render({
+            elem: '#list',
+            url: '/admin/{%data_field%}/index',
+            // toolbar: '#toolbar',
+            title: '数据表',
+            cols: [
+                [{
+                        field: '{%data_field%}_id',
+                        title: 'ID',
+                        sort: true,
+                        fixed: 'left',
+                        width: 80,
+                    },
+                    //  {
+                    //     field: 'article_litimg',
+                    //     title: '文章缩略图',
+                    //     templet: '#image',
+                    //     fixed: 'left'
+                    // }, 
+                    {
+                        field: 'create_time',
+                        title: '创建时间',
+                        sort: true,
+                        fixed: 'left'
+                    },
+                    {
+                        fixed: 'right',
+                        width: '15%',
+                        align: 'center',
+                        title: '操作',
+                        toolbar: '#actionbar'
+                    },
+                ]
+            ],
+            page: true,
+        });
+
+        //搜索
+        var $ = layui.$,
+            active = {
+                reload: function () {
+                    var srarchReload = $('#srarchReload').val(); //获取输入框的值
+                    table.reload('list', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        },
+                        where: {
+                            '{%data_field%}_id': srarchReload
+                        }, //这里传参  向后台
+                        url: '/admin/{%data_field%}/index', //后台做模糊搜索接口路径
+                        method: 'post'
+                    });
+                }
+            };
+        //搜索点击
+        $('.saerchToll .layui-btn').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+        //监听行工具事件
+        table.on('tool(list)', function (obj) {
+            var data = obj.data;
+            url = '/admin/{%data_field%}/delete/' + data.{%data_field%}_id;
+            var edit = '/admin/{%data_field%}/edit/' + data.{%data_field%}_id;
+            //删除
+            if (obj.event === 'del') {
+                layer.confirm('是否删除？', function (index) {
+                    $.get(url, data.field).then(result => {
+                        layer.alert(result.msg, {
+                            icon: result.code + 1,
+                            title: '提示信息'
+                        }, function (index) {
+
+                            // var index = parent.layer.getFrameIndex(window.name);
+                            // console.log('TCL: index', index)
+                            // //关闭当前frame
+                            layer.close(index);
+
+                            location.reload()
+
+                        });
+                    });
+                    layer.close(index);
+                });
+            } else if (obj.event === 'edit') {
+                //编辑
+                WeAdminShow('编辑内容', edit);
+            }
+        });
+    });
+</script>

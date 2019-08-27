@@ -1,5 +1,5 @@
 {
-    "name": "fdd/php-helper",
+    "name": "kuiba/php-helper",
     "type": "library",
     "description": "test",
     "license": "MIT",
@@ -15,9 +15,9 @@
     "autoload": {
         "psr-4": {
             "Kuiba\\kuibaAdmin\\": "src",
-            "Kuiba\\Qihengsan\\": "src/Kuiba/Qihengsan",
-            "Kuiba\\Youmingkuang\\": "src/Kuiba/Youmingkuang",
-            "Kuiba\\Haiwenxiang\\": "src/Kuiba/Haiwenxiang"
+            "Kuiba\\Qihengsan\\": "src/Qihengsan",
+            "Kuiba\\Youmingkuang\\": "src/Youmingkuang",
+            "Kuiba\\Haiwenxiang\\": "src/Haiwenxiang"
         },
         "files": [
             "src/helper.php"

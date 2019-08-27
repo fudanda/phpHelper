@@ -1,0 +1,130 @@
+<?php
+/**
+ * author:
+ * time: 
+ */
+namespace {%namespace%};
+
+use app\common\model\{%className%} as {%className%}Model;
+use think\db\exception\DataNotFoundException;
+use think\db\exception\ModelNotFoundException;
+use think\exception\DbException;
+
+/**
+ * @method static function() 方法作用
+ */
+
+class {%className%} extends {%className%}Model
+{
+    public function add()
+    {
+        $data = [
+            '{%data_field%}_title' =>  input('post.{%data_field%}_title/s', '', 'trim'),
+        ];
+        //$save_res = saveBase64Image($data['article_litimg'], 'admin');
+        //if ($save_res['code'] != 0) return  ['code' => 1, 'msg' => $save_res['msg']];
+        //$data['article_litimg'] = $save_res['url'];
+        $result = self::save($data);
+
+        /* 确认并返回结果 */
+        return $result  ? ['code' => 0, 'msg' => '新增成功', 'data' => $data] : ['code' => 1, 'msg' => '新增失败'];
+    }
+
+    public function dataList()
+    {
+        $this->setPage();               //设置分页
+        $this->setOrder();              //设置排序
+        $data = [
+            '{%data_field%}_id' =>  input('param.{%data_field%}_id/s', null),
+        ];
+        $condition[] = ['{%data_field%}_id', 'like', '%' . $data['{%data_field%}_id'] . '%'];
+
+        try {
+            $list = $this
+                ->field(true)
+                ->page($this->page)
+                ->limit($this->limit)
+                ->order($this->order, $this->sort)
+                ->where($condition)
+                ->select();
+            // $list = $this->getLastSql();
+            /* 查询所有数据的数量 */
+            $count = $this->where($condition)->count();
+
+            return ['data' => $list, 'count' => $count, 'code' => 0, 'msg' => '获取列表成功'];
+        } catch (DbException $e) {
+
+            return ['code' => 1, 'data' => [], 'count' => 0, 'msg' => $e->getMessage()];
+        }
+    }
+    /**
+     * 删除数据（单多项）
+     * @param null 
+     * @return array
+     */
+    public function deleteData()
+    {
+        /* 验证用户ID存在性 */
+        if (!$id = input('param.id/a')) return ['code' => 1, 'msg' => 'ID不能为空'];
+
+        /* 执行删除 */
+        $result = self::destroy($id);
+
+        /* 确认并返回结果 */
+        return $result ? ['code' => 0, 'msg' => '删除成功'] : ['code' => 1, 'msg' => '删除失败'];
+    }
+    /**
+     * 更新数据
+     * @param null 
+     * @return array
+     */
+    public function editData()
+    {
+        /* 验证用户ID存在性 */
+        if (!$id = input('param.id/s')) return ['code' => 1, 'msg' => 'ID不能为空'];
+
+
+        $data = [
+            '{%data_field%}_data'   =>  input('post.{%data_field%}_data/s', '', 'trim'),
+        ];
+        //if (preg_match('/^(data:\s*image\/(\w+);base64,)/', $data['article_litimg'])) {
+        //    $save_res = saveBase64Image($data['article_litimg'], 'admin');
+        //    if ($save_res['code'] != 0) return  ['code' => 1, 'msg' => $save_res['msg']];
+        //    $data['article_litimg'] = $save_res['url'];
+        //};
+
+        /* 执行更新 */
+           
+        $result = self::where('{%data_field%}_id', $id)
+            ->update($data);
+        $result = $this->getLastSql();
+        /* 确认并返回结果 */
+        return $result ? ['code' => 0, 'msg' => '更新成功'] : ['code' => 1, 'msg' => '更新失败'];
+    }
+    public function getDataById()
+    {
+        /* 验证用户ID存在性 */
+        if (!$id = input('param.id/s')) return ['code' => 1, 'msg' => 'ID不能为空'];
+
+
+        $result = self::where('{%data_field%}_id', $id)
+            ->find();
+
+        // $result = $this->getLastsql();
+        /* 确认并返回结果 */
+        return $result;
+    }
+    public function getPage()
+    {
+        /* 验证用户ID存在性 */
+        if (!$id = input('param.id/s')) return ['code' => 1, 'msg' => 'ID不能为空'];
+
+        $map[] = ['{%data_field%}_id', '>=', $id];
+        $result = self::where($map)
+            ->count();
+        $result = ceil($result / 10);
+        // $result = $this->getLastsql();
+        /* 确认并返回结果 */
+        return $result;
+    }
+}

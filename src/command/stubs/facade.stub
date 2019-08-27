@@ -1,0 +1,20 @@
+<?php
+/**
+ * author:
+ * time: 
+ */
+namespace {%namespace%};
+
+use think\Facade;
+
+/**
+ * @method static function() 方法作用
+ */
+
+class {%className%} extends Facade
+{
+    protected static function getFacadeClass()
+    {
+        return '{%namespace_new%}\service\{%className%}';
+    }
+}
