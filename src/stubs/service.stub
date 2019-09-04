@@ -7,13 +7,13 @@
 
 namespace {%namespace%};
 
-//use app\common\model\{%className%} as {%className%}Model;
+use app\common\model\{%className%} as {%className%}Model;
 
 /**
  * @method
  */
 
-class {%className%} extends Common
+class {%className%} extends {%className%}Model
 {
     /**
      * 获取数据列表

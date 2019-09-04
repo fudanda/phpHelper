@@ -246,9 +246,10 @@ class Curd extends \think\console\Command
 
         $data_field = cc_format($class);
 
-        return str_replace(['{%className%}', '{%namespace%}'], [
+        return str_replace(['{%className%}', '{%namespace%}', '{%data_field%}'], [
             $class,
             $namespace,
+            $data_field,
         ], $stub);
     }
 
