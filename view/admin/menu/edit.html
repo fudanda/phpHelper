@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/static/admin/lib/layui-v2.5.4/css/layui.css" media="all">
 <div class="weadmin-body">
     <form class="layui-form form-padding" id="form">
+        <input type="hidden" class="menu_id" name="menu_id" value="{$data['id']}">
         <div class="layui-form-item">
             <label class="layui-form-label">输入框</label>
             <div class="layui-input-block">
@@ -58,11 +59,10 @@
         </div>
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="add">立即提交</button>
+                <button class="layui-btn" lay-submit lay-filter="edit">立即提交</button>
             </div>
         </div>
     </form>
-
 </div>
 <script src="/static/admin/lib/layui-v2.5.4/layui.js?v=1.0.4" charset="utf-8"></script>
 <script src="/static/admin/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
@@ -72,42 +72,28 @@
             $ = layui.jquery,
             form = layui.form,
             layer = layui.layer;
-
-        form.verify({
-            image: function (value) {
-                if (value.length == '') {
-                    return '请上传图片！';
-                }
-            },
-            select: function (value) {
-                if (value == '') {
-                    return '请选择分类';
-                }
-            },
-        });
         //富文本编辑器
-        var E = window.wangEditor;
-        var editor = new E('#editor');
-        editor.customConfig.uploadImgShowBase64 = true;
-        // 或者 var editor = new E( document.getElementById('editor') )
-        // editor.customConfig.uploadImgServer = '/static/upload'
-        editor.create();
-
+        // var E = window.wangEditor;
+        // var editor = new E('#editor');
+        // editor.customConfig.uploadImgShowBase64 = true;
+        // // 或者 var editor = new E( document.getElementById('editor') )
+        // // editor.customConfig.uploadImgServer = '/static/upload'
+        // editor.create();
         //监听提交
-        form.on('submit(add)', function (data) {
+        form.on('submit(edit)', function (data) {
+
             // data.field['article_content'] = editor.txt.html();
             // data.field['article_litimg'] = $('.dropify-render').find('img').attr('src');
-            let addurl = '/admin/{%data_field%}/add'
-            // console.log(data.field);
+            let editurl = '/admin/menu/edit/' + $('.menu_id').val();
             /* 提交数据 */
-            $.post(addurl, data.field).then(result => {
-                // console.log('TCL: result', result.data);
+            $.post(editurl, data.field).then(result => {
+
                 layer.alert(result.msg, {
                     icon: result.code + 1,
                     title: '添加结果'
                 }, function (index) {
                     var index = parent.layer.getFrameIndex(window.name);
-                    // console.log('TCL: index', index)
+                    //console.log('TCL: index', index)
                     //关闭当前frame
                     parent.layer.close(index);
                     window.parent.location.reload()
@@ -115,6 +101,5 @@
             });
             return false;
         });
-
     });
 </script>

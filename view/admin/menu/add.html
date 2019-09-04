@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="/static/admin/lib/layui-v2.5.4/css/layui.css" media="all">
 <div class="weadmin-body">
     <form class="layui-form form-padding" id="form">
         <div class="layui-form-item">
@@ -64,8 +63,7 @@
     </form>
 
 </div>
-<script src="/static/admin/lib/layui-v2.5.4/layui.js?v=1.0.4" charset="utf-8"></script>
-<script src="/static/admin/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+
 <script type="text/javascript">
     layui.use(['jquery', 'form', 'layer'], function () {
         var admin = layui.admin,
@@ -97,7 +95,7 @@
         form.on('submit(add)', function (data) {
             // data.field['article_content'] = editor.txt.html();
             // data.field['article_litimg'] = $('.dropify-render').find('img').attr('src');
-            let addurl = '/admin/{%data_field%}/add'
+            let addurl = '/admin/menu/add'
             // console.log(data.field);
             /* 提交数据 */
             $.post(addurl, data.field).then(result => {
@@ -111,6 +109,7 @@
                     //关闭当前frame
                     parent.layer.close(index);
                     window.parent.location.reload()
+
                 });
             });
             return false;

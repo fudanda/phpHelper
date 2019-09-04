@@ -1,16 +1,19 @@
 <?php
 /**
  * author:
- * time: 
+ * time:
  */
 namespace {%namespace%};
 
 use think\Facade;
 
 /**
- * @method static function() 方法作用
+ * @method array getList() static 获取列表
+ * @method array addInfo() static 新增记录
+ * @method array getInfo() static 获取记录
+ * @method array updateInfo() static 更新记录
+ * @method array deleteData() static 删除数据
  */
-
 class {%className%} extends Facade
 {
     protected static function getFacadeClass()

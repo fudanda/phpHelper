@@ -23,6 +23,8 @@ class Command extends \think\console\Command
         $this->createStatic($output);
         $this->createMigrations($output);
         $this->createHtml($output);
+        $this->createCommonModel($output);
+        $this->createRouter($output);
     }
     //复制配置文件
     public function createConfig($output)
@@ -60,5 +62,35 @@ class Command extends \think\console\Command
         $staticPath = env('app_path') . '..' . DIRECTORY_SEPARATOR . 'view';
         copy_dir(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'view', $staticPath);
         $output->writeln('Copy Html success(Html文件复成功)');
+    }
+    //复制公共model文件
+    public function createCommonModel($output)
+    {
+        $configFilePath = env('app_path') . '..' . DIRECTORY_SEPARATOR . 'application' . DIRECTORY_SEPARATOR . 'common' . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Common.php';
+        // if (is_file($configFilePath)) {
+        //     $output->writeln('Config file is exist');
+        // } else {
+        $res = copy(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Common.php', $configFilePath);
+        if ($res) {
+            $output->writeln('Create CommonModel file success:' . $configFilePath);
+        } else {
+            $output->writeln('Create configCommonModel file error');
+            // }
+        }
+    }
+    //复制公共model文件
+    public function createRouter($output)
+    {
+        $configFilePath = env('app_path') . '..' . DIRECTORY_SEPARATOR . 'route' . DIRECTORY_SEPARATOR . 'admin.php';
+        if (is_file($configFilePath)) {
+            $output->writeln('Route admin.php file is exist');
+        } else {
+            $res = copy(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'route' . DIRECTORY_SEPARATOR . 'admin.php', $configFilePath);
+            if ($res) {
+                $output->writeln('Create Route file success:' . $configFilePath);
+            } else {
+                $output->writeln('Create configCommonModelRouteRoute file error');
+            }
+        }
     }
 }

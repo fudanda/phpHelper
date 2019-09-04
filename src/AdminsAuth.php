@@ -78,6 +78,8 @@ class AdminsAuth
     public function menu()
     {
         $menus = [];
+        $allmenu  = Menu::where('status', 0)->select();
+        $this->initAllMenu($allmenu);
         $menu  = Menu::where('status', 0)->order('order asc');
         foreach ($this->info()->roles as $role) {
             if ($role->status !== 0) {
@@ -92,14 +94,24 @@ class AdminsAuth
             $menus = array_merge($menus, $role->menus->toArray());
         }
         $menus = assoc_unique($menus, 'id');
-
         $new_menu = buildTree($menus, true);
         $this->initMenu($new_menu);
 
-
         return $new_menu;
     }
+    public function initAllMenu($menu)
+    {
+        $configFilePath = env('app_path') . '..' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'static' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'api' . DIRECTORY_SEPARATOR . 'menus.json';
+        // $json_string = file_get_contents($configFilePath);
 
+        $data['code'] = 0;
+        $data['msg'] = '成功！';
+        $data['count'] = count($menu);
+        $data['data'] = $menu;
+        $json_string = json_encode($data, JSON_UNESCAPED_UNICODE);
+        // 写入文件
+        file_put_contents($configFilePath, $json_string);
+    }
     public function initMenu($new_menu)
     {
         $configFilePath = env('app_path') . '..' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'static' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'api' . DIRECTORY_SEPARATOR . 'init.json';

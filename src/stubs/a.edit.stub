@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="/static/admin/lib/layui-v2.5.4/css/layui.css" media="all">
 <div class="weadmin-body">
     <form class="layui-form form-padding" id="form">
         <input type="hidden" class="article_id" name="article_id" value="{$data['{%data_field%}_id']}">
@@ -62,9 +63,9 @@
             </div>
         </div>
     </form>
-
 </div>
-
+<script src="/static/admin/lib/layui-v2.5.4/layui.js?v=1.0.4" charset="utf-8"></script>
+<script src="/static/admin/js/lay-config.js?v=1.0.4" charset="utf-8"></script>
 <script type="text/javascript">
     layui.use(['jquery', 'form', 'layer'], function () {
         var admin = layui.admin,
@@ -80,13 +81,11 @@
         // editor.create();
         //监听提交
         form.on('submit(edit)', function (data) {
-
             // data.field['article_content'] = editor.txt.html();
             // data.field['article_litimg'] = $('.dropify-render').find('img').attr('src');
             let editurl = '/admin/{%data_field%}/edit/' + $('.{%data_field%}_id').val();
             /* 提交数据 */
             $.post(editurl, data.field).then(result => {
-
                 layer.alert(result.msg, {
                     icon: result.code + 1,
                     title: '添加结果'

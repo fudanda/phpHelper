@@ -383,6 +383,14 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                     menuLeft: '#2f4056',
                     menuLeftThis: '#1aa094',
                     menuLeftHover: '#3b3f4b',
+                },
+                {
+                    headerRight: '#409EFF',
+                    headerRightThis: '#67C23A',
+                    headerLogo: '#E6A23C',
+                    menuLeft: '#2f4056',
+                    menuLeftThis: '#409EFF',
+                    menuLeftHover: '#82B5E8',
                 }
             ];
 
@@ -648,6 +656,13 @@ layui.define(["element", "jquery", "layer"], function (exports) {
         sessionStorage.setItem('layuiminiBgcolorId', bgcolorId);
         layuimini.initBgColor();
     });
+    //空值判断
+    window.isEmptyObj = function (obj) {
+        for (var key in obj) {
+            if ({}.hasOwnProperty.call(obj, key)) return false;
+        }
+        return true;
+    };
     //layer 打开页面
     window.WeAdminShow = function (title, url, w, h) {
         if (title == null || title == '') {
@@ -657,7 +672,7 @@ layui.define(["element", "jquery", "layer"], function (exports) {
             url = "404.html";
         };
         if (w == null || w == '') {
-            w = ($(window).width() * 0.95);
+            w = ($(window).width() * 0.65);
         };
         if (h == null || h == '') {
             h = ($(window).height() - 100);
@@ -673,8 +688,6 @@ layui.define(["element", "jquery", "layer"], function (exports) {
             title: title,
             content: url,
         });
-    }
-
+    };
     exports("layuimini", layuimini);
-}
-);
+});

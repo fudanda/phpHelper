@@ -29,14 +29,14 @@ layui.define(['layer', 'table'], function (exports) {
                 var tt = tNodes[i];
                 if (!tt.id) {
                     if (!param.treeIdName) {
-                        layer.msg('参数treeIdName不能为空', {icon: 5});
+                        layer.msg('参数treeIdName不能为空', { icon: 5 });
                         return;
                     }
                     tt.id = tt[param.treeIdName];
                 }
                 if (!tt.pid) {
                     if (!param.treePidName) {
-                        layer.msg('参数treePidName不能为空', {icon: 5});
+                        layer.msg('参数treePidName不能为空', { icon: 5 });
                         return;
                     }
                     tt.pid = tt[param.treePidName];
@@ -77,7 +77,12 @@ layui.define(['layer', 'table'], function (exports) {
                 if (isDir) {
                     iconHtml += '<i class="layui-icon layui-icon-triangle-d"></i> <i class="layui-icon layui-icon-layer"></i>';
                 } else {
-                    iconHtml += '<i class="layui-icon layui-icon-file"></i>';
+                    if (treetable.isEmptyObj(param.icon)) {
+                        iconHtml += '<i class="layui-icon layui-icon-file"></i>';
+                    } else {
+                        iconHtml += '<i class="' + d[param.icon] + '"></i>';
+                    }
+
                 }
                 iconHtml += '&nbsp;&nbsp;';
                 var ttype = isDir ? 'dir' : 'file';
@@ -104,6 +109,13 @@ layui.define(['layer', 'table'], function (exports) {
             // 渲染表格
             table.render(param);
         },
+        //空值判断
+        isEmptyObj: function (obj) {
+            for (var key in obj) {
+                if ({}.hasOwnProperty.call(obj, key)) return false;
+            }
+            return true;
+        },
         // 计算缩进的数量
         getEmptyNum: function (pid, data) {
             var num = 0;
@@ -120,6 +132,7 @@ layui.define(['layer', 'table'], function (exports) {
             }
             return num + treetable.getEmptyNum(tPid, data);
         },
+
         // 展开/折叠行
         toggleRows: function ($dom, linkage) {
             var type = $dom.attr('lay-ttype');
@@ -156,12 +169,12 @@ layui.define(['layer', 'table'], function (exports) {
         // 检查参数
         checkParam: function (param) {
             if (!param.treeSpid && param.treeSpid != 0) {
-                layer.msg('参数treeSpid不能为空', {icon: 5});
+                layer.msg('参数treeSpid不能为空', { icon: 5 });
                 return false;
             }
 
             if (!param.treeColIndex && param.treeColIndex != 0) {
-                layer.msg('参数treeColIndex不能为空', {icon: 5});
+                layer.msg('参数treeColIndex不能为空', { icon: 5 });
                 return false;
             }
             return true;
