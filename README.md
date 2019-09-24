@@ -1,6 +1,6 @@
 
 
-# [php-helper](https://github.com/fudanda/myadmin)
+# [php-helper](https://github.com/fudanda/phpHelper)
 
 ===============
 
@@ -23,7 +23,7 @@
 ## 安装
 
 ~~~
-composer require fdd/php-helper
+composer require fdd/php-helper  (名称暂定)
 ~~~
 ## 使用
 
@@ -50,17 +50,13 @@ php think  curd:admin/Article
 ~~~
 
 
-
 ![](https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=4168864317,3199957741&fm=58&bpow=1121&bpoh=1600)
 
 # PHP 助手类 封装常用方法
 
-[![PHP Version](https://img.shields.io/badge/php-%3E%3D5.6-8892BF.svg)](http://www.php.net/)
-[![License](https://poser.pugx.org/topthink/framework/license)](https://packagist.org/packages/topthink/framework)
-
 对一些项目中常用的方法进行封装,减少 copy 代码的时间：：
 
-- 奇衡三 基斯卡人
+- 奇衡三 基斯卡人 （导出）
 - 幽弥狂 雾妖
 - 燃谷 兽族
 - 幽若离 格勒莫赫人
