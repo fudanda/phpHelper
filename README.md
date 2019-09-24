@@ -39,6 +39,18 @@ php think  admin:init
 php think  vue:init
 ~~~
 
+vue项目初始化
+
+~~~
+1.安装
+npm install --no-bin-links
+2.更新包
+npm install -g npm-check-updates
+3.编译 监视项目的变化
+npm run watch
+~~~
+
+
 更新
 ~~~
 composer update fdd/php-helper
