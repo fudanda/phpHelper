@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+		<style type="text/css">
+			html,body{
+				height: 100%;
+			}
+			.echarts_wrap{
+				width: 90%;
+				height: 60%;
+				margin: 100px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main" class="echarts_wrap"></div>
+	</body>
+	<script src="js/echarts.common.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		// 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'),'light');
+
+        // 指定图表的配置项和数据
+        var option = {
+		    legend: {},
+		    tooltip: {},
+		    dataset: {
+		        source: [
+		            ['product', '日活', '周活', '月活'],
+		            ['Matcha Latte', 43.3, 85.8, 93.7],
+		            ['Milk Tea', 83.1, 73.4, 55.1],
+		            ['Cheese Cocoa', 86.4, 65.2, 82.5],
+		            ['Walnut Brownie', 72.4, 53.9, 39.1]
+		        ]
+		    },
+//		    xAxis: {type: 'category'},
+//		    yAxis: {},
+			xAxis: {
+		        type: 'category',
+		        min: 'dataMin',
+		        max: 'dataMax',
+		        splitLine: {
+		            show: true
+		        }
+		    },
+		    yAxis: {
+		        type: 'value',
+		        min: 'dataMin',
+		        max: 'dataMax',
+		        splitLine: {
+		            show: true
+		        }
+		    },
+//		    dataZoom: [{type: 'slider'}],
+			dataZoom: [
+		        {
+		            type: 'slider',
+		            show: true,
+		            xAxisIndex: [0],
+		            start: 1,
+		            end: 100
+		        },
+		        {
+		            type: 'inside',
+		            xAxisIndex: [0],
+		            start: 1,
+		            end: 100
+		        }
+		    ],
+		    // Declare several bar series, each will be mapped
+		    // to a column of dataset.source by default.
+		    series: [
+		        {type: 'bar'},
+		        {type: 'bar'},
+		        {type: 'bar'}
+		    ]
+		};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+	</script>
+</html>

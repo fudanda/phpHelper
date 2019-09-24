@@ -215,13 +215,25 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                 bgcolorId = layuimini.config('BgColorDefault');
             }
             var bgcolorData = layuimini.bgColorConfig(bgcolorId);
-            var styleHtml = '.layui-layout-admin .layui-header{background-color:' + bgcolorData.headerRight + '!important;}\n' +
-                '.layui-header>ul>.layui-nav-item.layui-this,.layuimini-tool i:hover{background-color:' + bgcolorData.headerRightThis + '!important;}\n' +
-                '.layui-layout-admin .layui-logo {background-color:' + bgcolorData.headerLogo + '!important;}\n' +
-                '.layui-side.layui-bg-black,.layui-side.layui-bg-black>.layui-left-menu>ul {background-color:' + bgcolorData.menuLeft + '!important;}\n' +
-                '.layui-left-menu .layui-nav .layui-nav-child a:hover:not(.layui-this) {background-color:' + bgcolorData.menuLeftHover + ';}\n' +
+            var styleHtml = '.layui-layout-admin .layui-header{background-color:' + bgcolorData.headerRight + '!important;background-image:url(/static/admin/images/thembg.png)!important;}\n' +
+                '.layui-layout-admin .layui-header a{color:' + bgcolorData.menuFontColor + '!important;}\n' +
+                '.layui-layout-admin .layui-header .layuimini-tool i{color:' + bgcolorData.menuFontColor + '!important;}\n' +
+                '.layui-header>ul>.layui-nav-item.layui-this,.layuimini-tool i:hover{background-color:' + bgcolorData.headerRightThis + '!important;background-image:url(/static/admin/images/thembg.png)!important;}\n' +
+                '.layui-layout-admin .layui-logo {background-color:' + bgcolorData.headerLogo + '!important;background-image:url(/static/admin/images/thembg.png)!important;}\n' +
+                '.layui-layout-admin .layui-logo h1{color:' + bgcolorData.menuFontColor + '!important;}\n' +
+
+                '.layui-side.layui-bg-black,.layui-side.layui-bg-black>.layui-left-menu>ul {background-color:' + bgcolorData.menuLeft + '!important;background-image:url(/static/admin/images/thembg.png)!important;}\n' +
+                '.layui-nav .layui-nav-mored, .layui-nav-itemed>a .layui-nav-more {border-color:transparent transparent ' + bgcolorData.menuFontColor + ';}\n' +
+                '.layui-nav-item>a:hover {background-color:' + bgcolorData.menuLeft + '!important;background-image:url(/static/admin/images/thembg.png)!important;}\n' +
+                ".layui-nav .layui-nav-more{content: '';width: 0;height: 0;border-style: solid dashed dashed;border-color: #fff transparent transparent;overflow: hidden;cursor: pointer;transition: all .2s;-webkit-transition: all .2s;position: absolute;top: 50%;right: 3px;margin-top: -3px;border-width: 6px;border-top-color:" + bgcolorData.menuFontColor + ";}\n" +
+
+                '.layui-nav-itemed>.layui-nav-child{background-color:' + bgcolorData.menuLeft + '!important;background-image:url(/static/admin/images/thembg.png)!important;}\n' +
+
+                '.layui-side.layui-bg-black,.layui-side.layui-bg-black>.layui-left-menu>ul a{color:' + bgcolorData.menuFontColor + '!important;}\n' +
+                '.layui-side.layui-bg-black,.layui-side.layui-bg-black>{background-color:' + bgcolorData.menuLeft + '!important;background-image:url(/static/admin/images/thembg.png)!important;}\n' +
+                '.layui-left-menu .layui-nav .layui-nav-child a:hover:not(.layui-this) {background-color:' + bgcolorData.menuLeftHover + ';background-image:url(/static/admin/images/thembg.png)!important;}\n' +
                 '.layui-layout-admin .layui-nav-tree .layui-this, .layui-layout-admin .layui-nav-tree .layui-this>a, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this, .layui-layout-admin .layui-nav-tree .layui-nav-child dd.layui-this a {\n' +
-                'background-color: ' + bgcolorData.menuLeftThis + ' !important;\n' +
+                'background-color: ' + bgcolorData.menuLeftThis + ' !important;background-image:url(/static/admin/images/thembg.png)!important;\n' +
                 '}';
             $('#layuimini-bg-color').html(styleHtml);
         };
@@ -294,6 +306,7 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                     menuLeft: '#2f4056',
                     menuLeftThis: '#1aa094',
                     menuLeftHover: '#3b3f4b',
+                    themName: '默认'
                 },
                 {
                     headerRight: '#23262e',
@@ -385,12 +398,22 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                     menuLeftHover: '#3b3f4b',
                 },
                 {
-                    headerRight: '#409EFF',
-                    headerRightThis: '#67C23A',
-                    headerLogo: '#E6A23C',
+                    headerRight: '#48c0a3',
+                    headerRightThis: '#2add9c',
+                    headerLogo: '#48c0a3',
                     menuLeft: '#2f4056',
-                    menuLeftThis: '#409EFF',
-                    menuLeftHover: '#82B5E8',
+                    menuLeftThis: '#48c0a3',
+                    menuLeftHover: '#3b3f4b',
+                },
+                {
+                    headerRight: '#d6ecf0',
+                    headerRightThis: '#f2fdff',
+                    headerLogo: '#d6ecf0',
+                    menuLeft: '#d6ecf0',
+                    menuLeftThis: '#f2fdff',
+                    menuLeftHover: '#f2fdff',
+                    menuFontColor: '#392f41',
+                    themName: '月白'
                 }
             ];
 
@@ -418,10 +441,15 @@ layui.define(["element", "jquery", "layer"], function (exports) {
                 } else {
                     html += '<li  data-select-bgcolor="' + key + '">\n';
                 }
+                if (val.themName == undefined) {
+                    val.themName = '~~';
+                }
                 html += '<a href="javascript:;" data-skin="skin-blue" style="" class="clearfix full-opacity-hover">\n' +
                     '<div><span style="display:block; width: 20%; float: left; height: 12px; background: ' + val.headerLogo + ';"></span><span style="display:block; width: 80%; float: left; height: 12px; background: ' + val.headerRight + ';"></span></div>\n' +
                     '<div><span style="display:block; width: 20%; float: left; height: 40px; background: ' + val.menuLeft + ';"></span><span style="display:block; width: 80%; float: left; height: 40px; background: #f4f5f7;"></span></div>\n' +
                     '</a>\n' +
+
+                    '<span class="layui-badge" style="background: ' + val.headerRight + ';color: ' + val.menuFontColor + ';" >' + val.themName + '</span>' +
                     '</li>';
             });
             return html;

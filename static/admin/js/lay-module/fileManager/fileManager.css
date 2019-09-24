@@ -1,0 +1,18 @@
+.tl {
+    text-align: center;
+}
+
+.fm-image {
+    width: 100px;
+    height: 100px;
+}
+
+.fm-div {
+    height: 160px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.fm-div>span:hover {
+    color: #009688;
+}

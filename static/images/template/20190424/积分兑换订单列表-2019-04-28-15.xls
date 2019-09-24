@@ -1,0 +1,70 @@
+
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+	<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+	xmlns:x="urn:schemas-microsoft-com:office:excel"
+	xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+	xmlns:html="http://www.w3.org/TR/REC-html40">
+<Styles>
+<Style ss:ID="Default" ss:Name="Normal">
+			   <Alignment ss:Vertical="Center"/>
+			   <Borders/>
+			   <Font ss:FontName="宋体" x:CharSet="134" ss:Size="11" ss:Color="#000000"/>
+			   <Interior/>
+			   <NumberFormat/>
+			   <Protection/>
+			  </Style>
+<Style ss:ID="s_title"><Font  ss:FontName="宋体" ss:Size="12" ss:Bold="1"/></Style>
+</Styles>
+<Worksheet ss:Name="积分兑换订单列表">
+<Table ss:DefaultRowHeight="20">
+<Column ss:Index="1" ss:AutoFitWidth="0"/>
+<Row>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">订单编号</Data></Cell>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">商品名称</Data></Cell>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">兑换数量</Data></Cell>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">积分</Data></Cell>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">下单时间</Data></Cell>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">收货人</Data></Cell>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">收货手机号</Data></Cell>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">收货地址</Data></Cell>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">完成时间</Data></Cell>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">状态</Data></Cell>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">商品详细信息</Data></Cell>
+<Cell ss:StyleID="s_title" ><Data ss:Type="String">所在大区</Data></Cell>
+</Row>
+
+<Row>
+<Cell  ><Data ss:Type="String">630609767351527069</Data></Cell>
+<Cell  ><Data ss:Type="String">小米（MI）小米手环2代 智能运动手环 计步器</Data></Cell>
+<Cell  ><Data ss:Type="String">1</Data></Cell>
+<Cell  ><Data ss:Type="String">2000</Data></Cell>
+<Cell  ><Data ss:Type="String">2019-04-28 11:49</Data></Cell>
+<Cell  ><Data ss:Type="String">阿强</Data></Cell>
+<Cell  ><Data ss:Type="String">13100693235</Data></Cell>
+<Cell  ><Data ss:Type="String">北京市东城区好好的八点半</Data></Cell>
+<Cell  ><Data ss:Type="String">1970-01-01 08:00</Data></Cell>
+<Cell  ><Data ss:Type="String">待完成</Data></Cell>
+<Cell  ><Data ss:Type="String"></Data></Cell>
+<Cell  ><Data ss:Type="String">无</Data></Cell>
+</Row>
+
+<Row>
+<Cell  ><Data ss:Type="String">790609767272394069</Data></Cell>
+<Cell  ><Data ss:Type="String">清亮度28包餐巾纸整箱抽纸巾原木卫生纸</Data></Cell>
+<Cell  ><Data ss:Type="String">1</Data></Cell>
+<Cell  ><Data ss:Type="String">600</Data></Cell>
+<Cell  ><Data ss:Type="String">2019-04-28 11:47</Data></Cell>
+<Cell  ><Data ss:Type="String">阿强</Data></Cell>
+<Cell  ><Data ss:Type="String">13100693235</Data></Cell>
+<Cell  ><Data ss:Type="String">北京市东城区好好的八点半</Data></Cell>
+<Cell  ><Data ss:Type="String">1970-01-01 08:00</Data></Cell>
+<Cell  ><Data ss:Type="String">待完成</Data></Cell>
+<Cell  ><Data ss:Type="String"></Data></Cell>
+<Cell  ><Data ss:Type="String">无</Data></Cell>
+</Row>
+</Table>
+</Worksheet>
+</Workbook>

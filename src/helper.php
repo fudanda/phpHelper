@@ -11,6 +11,8 @@
 \think\Console::addDefaultCommands([
     \Kuiba\kuibaAdmin\Command::class,
     \Kuiba\kuibaAdmin\Curd::class,
+    \Kuiba\kuibaAdmin\Vue::class,
+
 ]);
 
 // require_once 'route' . DIRECTORY_SEPARATOR . 'Route.php';
