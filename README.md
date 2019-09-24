@@ -52,3 +52,58 @@ composer require fdd/php-helper (暂定)
   }
  $excelObj->excelZip();
 ```
+
+
+
+[php-helper](https://github.com/fudanda/myadmin)
+
+===============
+
+[![PHP Version](https://img.shields.io/badge/php-%3E%3D7.1-8892BF.svg)](http://www.php.net/)
+[![License](https://poser.pugx.org/topthink/framework/license)](https://packagist.org/packages/topthink/framework)
+
+适用于 [ThinkPHP5.1](http://thinkphp.cn) 快速生成 html/vue 打开即用的后台管理页面
+
+## 主要新特性
+
+* 创建权限数据库
+* 创建静态文件
+* laravel-mix 打包vue项目
+
+
+
+
+> php-helper 的运行环境要求PHP7.1+。
+
+## 安装
+
+~~~
+composer require fdd/php-helper
+~~~
+## 使用
+
+创建html项目
+
+~~~
+php think  admin:init
+~~~
+
+创建Vue项目
+
+~~~
+php think  vue:init
+~~~
+
+更新
+~~~
+composer update fdd/php-helper
+~~~
+
+创建 model,contrell 等等(admin 为多应用名称,Article为控制器名，首字母需大写)
+~~~
+php think  curd:admin/Article
+~~~
+
+
+
+[![tobecontinued](tobecontinued.jpg)](https://github.com/fudanda/myadmin)
