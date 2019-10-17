@@ -717,5 +717,9 @@ layui.define(["element", "jquery", "layer"], function (exports) {
             content: url,
         });
     };
+    //跳转链接
+    window.getUrl = function (url) {
+        location.href = url;
+    };
     exports("layuimini", layuimini);
 });

@@ -10,14 +10,26 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0"
+        "php": ">=7.0.0",
+        "phpoffice/phpspreadsheet": "^1.9",
+        "endroid/qr-code": "^3.6",
+        "jianyan74/php-excel": "^1.0"
     },
     "autoload": {
         "psr-4": {
             "Kuiba\\kuibaAdmin\\": "src",
-            "Kuiba\\Qihengsan\\": "src/Qihengsan",
-            "Kuiba\\Youmingkuang\\": "src/Youmingkuang",
-            "Kuiba\\Haiwenxiang\\": "src/Haiwenxiang"
+            "Kuiba\\Baguda\\": "src/Kuiba/Baguda",
+            "Kuiba\\Carlaxiaokeling\\": "src/Kuiba/Carlaxiaokeling",
+            "Kuiba\\Dacang\\": "src/Kuiba/Dacang",
+            "Kuiba\\Haiwenxiang\\": "src/Kuiba/Haiwenxiang",
+            "Kuiba\\Leiguang\\": "src/Kuiba/Leiguang",
+            "Kuiba\\Mellonmonicajia\\": "src/Kuiba/Mellonmonicajia",
+            "Kuiba\\Qihengsan\\": "src/Kuiba/Qihengsan",
+            "Kuiba\\Qiuluomu\\": "src/Kuiba/Qiuluomu",
+            "Kuiba\\Rangu\\": "src/Kuiba/Rangu",
+            "Kuiba\\Wanliang\\": "src/Kuiba/Wanliang",
+            "Kuiba\\Youmingkuang\\": "src/Kuiba/Youmingkuang",
+            "Kuiba\\Youruoli\\": "src/Kuiba/Youruoli"
         },
         "files": [
             "src/helper.php"
