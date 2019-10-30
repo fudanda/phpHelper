@@ -11,6 +11,17 @@ use think\console\Output;
 
 class Command extends \think\console\Command
 {
+
+    public $config = [
+        'createConfig' => [],
+        '' => [],
+        '' => [],
+        '' => [],
+        '' => [],
+        '' => [],
+        '' => [],
+    ];
+
     public function configure()
     {
         $this->setName('admin:init')

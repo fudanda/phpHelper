@@ -86,22 +86,39 @@ php think  curd:admin/Article
 ###1.导出
 //命名空间引用
 
-`use Kuiba\Qihengsan\ExcelExport;`
+`use Kuiba\Qihengsan\ExcelExportV2;`
 
-//单个导出
-
-```php
- $excelObj->exportTheExcel($filename, $xlsCell, $data);
-```
-
-//压缩导出
+//导出
 
 ```php
- $res = array_chunk($data, 1000); $num = count($res);
- for ($i = 0; $i < $num; $i++) {
-     $myres = $excelObj->exportTheExcelZip($filename, $xlsCell, $res[$i], $i + 1);
-  }
- $excelObj->excelZip();
+    $list   = [
+        [
+            "title"   => "你是什么垃圾？",
+            "type"    => 1,
+            "content" => "喵喵喵？？？",
+            "img"     => "/static/uploads/20190928\77871c95d3f86e6f4f5b7fb3655355be.jpg",
+            "create_time" => time(),
+        ]
+    ];  //数据
+    $header = [
+        ['标题', 'title', 'text'],
+        ['内容', 'content', 'text'], // 规则不填默认text
+        ['类型', 'type', 'selectd', [1 => '新闻', 2 => '刊物']],
+        ['图片链接', 'img', 'function', function ($model) {
+            return  'www.myadmin' . $model['msg_img'];
+        }],
+        ['创建时间', 'create_time', 'data', 'Y-m-d'],
+    ];//表头
+    $fileName = time();  //文件名 默认当前时间戳
+    $suffix   = 'xlsx';  //后缀名 默认-xlsx-(xlsx/xls/html/csv)
+    return ExcelExportV2:: export($list, $header, $fileName,$suffix);
+```
+//导入
+```php
+    $filePath   = './static/excel/1.xlsx'; //文件路径
+    $startIndex = 1;                       //开始行数 默认 1
+    $data = ExcelExportV2::import($filePath, $startIndex);
+    var_dump($data);
 ```
 
-[![tobecontinued](tobecontinued.jpg)](https://github.com/fudanda/myadmin)
+[![tobecontinued](./util/tobecontinued.jpg)](https://github.com/fudanda/myadmin)

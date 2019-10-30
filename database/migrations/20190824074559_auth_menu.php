@@ -32,6 +32,7 @@ class AuthMenu extends Migrator
         $table = $this->table('menu');
 
         $table->addColumn('name', 'string', ['limit' => 100])
+            ->addColumn('title', 'string', ['limit' => 100])
             ->addColumn('parent_id', 'integer', ['limit' => MysqlAdapter::INT_REGULAR, 'default' => 0])
             ->addColumn('order', 'integer', ['limit' => MysqlAdapter::BLOB_REGULAR, 'default' => 1000])
             ->addColumn('icon', 'string', ['limit' => 100])
@@ -45,15 +46,17 @@ class AuthMenu extends Migrator
             ->create();
         $default[] = [
             'name'        => '系统管理',
+            'title'        => '系统管理',
             'parent_id'   => 0,
             'order'       => 1,
-            'icon'        => 'layui-icon-set',
+            'icon'        => 'layui-icon layui-icon-set',
             'uri'         => '',
             'create_time' => time(),
             'update_time' => time(),
         ];
         $default[] = [
             'name'        => '菜单管理',
+            'title'        => '菜单管理',
             'parent_id'   => 1,
             'order'       => 2,
             'icon'        => '',
@@ -63,6 +66,7 @@ class AuthMenu extends Migrator
         ];
         $default[] = [
             'name'        => '权限管理',
+            'title'       => '权限管理',
             'parent_id'   => 1,
             'order'       => 3,
             'icon'        => '',
@@ -72,6 +76,7 @@ class AuthMenu extends Migrator
         ];
         $default[] = [
             'name'        => '权限组',
+            'title'        => '权限组',
             'parent_id'   => 1,
             'order'       => 4,
             'icon'        => '',
@@ -81,15 +86,17 @@ class AuthMenu extends Migrator
         ];
         $default[] = [
             'name'        => '用户管理',
+            'title'        => '用户管理',
             'parent_id'   => 0,
             'order'       => 5,
-            'icon'        => 'layui-icon-user',
+            'icon'        => 'layui-icon layui-icon-user',
             'uri'         => '',
             'create_time' => time(),
             'update_time' => time(),
         ];
         $default[] = [
             'name'        => '本站管理员',
+            'title'        => '本站管理员',
             'parent_id'   => 5,
             'order'       => 6,
             'icon'        => '',
