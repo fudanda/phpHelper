@@ -7,7 +7,7 @@
  * This source file is subject to the Apache2.0 license that is bundled.
  */
 \think\Console::addDefaultCommands([
-    \Kuiba\kuibaAdmin\Command::class,
+    \Kuiba\kuibaAdmin\Html::class,
     \Kuiba\kuibaAdmin\Curd::class,
     \Kuiba\kuibaAdmin\Vue::class,
 ]);
@@ -228,5 +228,28 @@ if (!function_exists('cc_format')) {
             }
         }
         return implode('', $temp_array);
+    }
+}
+if (!function_exists('file_build_path')) {
+    function file_build_path(...$segments)
+    {
+        return join(DIRECTORY_SEPARATOR, $segments);
+    }
+}
+
+
+if (!function_exists('Throwanexception')) {
+    /**
+     * 抛出异常处理
+     *
+     * @param string    $msg  异常消息
+     * @param integer   $code 异常代码 默认为0
+     * @param string    $exception 异常类
+     *
+     * @throws Exception
+     */
+    function Throwanexception($msg, $code = 0, $exception = '')
+    {
+        throw new \Exception($msg, $code);
     }
 }

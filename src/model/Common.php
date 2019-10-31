@@ -36,9 +36,8 @@ class Common extends Model
     public function scopeOrder(Query $query)
     {
         /** 接收参数 */
-        $sort = input('param.sort', 'create_time');
+        $sort = input('param.sort', $this->pk);
         $order = input('param.order', 'desc');
-
         /** 设置排序 */
         $query->order($sort, $order);
     }

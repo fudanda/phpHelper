@@ -1,9 +1,5 @@
-## 使用
-
-## 引用
-
+## 使用 [返回](../README.md)
 `use Kuiba\Qihengsan\ExcelExportV2;`
-
 ## 导出
 ```php
     $list   = [

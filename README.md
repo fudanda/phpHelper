@@ -15,9 +15,6 @@
 * 创建静态文件
 * laravel-mix 打包vue项目
 
-
-
-
 > php-helper 的运行环境要求PHP7.1+。
 
 ## 安装
@@ -68,7 +65,7 @@ php think  curd:admin/Article
 
 对一些项目中常用的方法进行封装,减少 copy 代码的时间：：
 
-- 奇衡三 基斯卡人 （导出）
+- 奇衡三 基斯卡人 （[导出](./doc/README-Excel.md)）
 - 幽弥狂 雾妖
 - 燃谷 兽族
 - 幽若离 格勒莫赫人

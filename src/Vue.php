@@ -8,6 +8,7 @@ namespace Kuiba\kuibaAdmin;
 
 use think\console\Input;
 use think\console\Output;
+use Kuiba\kuibaAdmin\facade\Tool;
 
 class Vue extends \think\console\Command
 {
@@ -29,91 +30,44 @@ class Vue extends \think\console\Command
         // $this->createRouter($output);
     }
     //复制配置文件
-    public function createwebpackmix($output)
+    public function createWebpackmix($output)
     {
-        $configFilePath = env('app_path') . '..' . DIRECTORY_SEPARATOR . 'webpack.mix.js';
-
-        $output->writeln($configFilePath);
-
-        if (is_file($configFilePath)) {
-            $output->writeln('webpackmix file is exist');
-        } else {
-            $res = copy(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vue' . DIRECTORY_SEPARATOR . 'webpack.mix.js', $configFilePath);
-            if ($res) {
-                $output->writeln('Create webpackmix file success:' . $configFilePath);
-            } else {
-                $output->writeln('Create webpackmix file error');
-            }
-        }
+        $filePath = file_build_path(env('app_path'), '..', 'webpack.mix.js');
+        $baseFilePath = file_build_path(__DIR__, '..', 'vue', 'webpack.mix.js');
+        Tool::handle($output, __FUNCTION__, $filePath, $baseFilePath);
     }
     //复制 babel 配置文件
     public function createBabelrc($output)
     {
-        $configFilePath = env('app_path') . '..' . DIRECTORY_SEPARATOR . '.babelrc';
-        if (is_file($configFilePath)) {
-            $output->writeln('Config file is exist');
-        } else {
-            $res = copy(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vue' . DIRECTORY_SEPARATOR . '.babelrc', $configFilePath);
-            if ($res) {
-                $output->writeln('Create Babelrc file success:' . $configFilePath);
-            } else {
-                $output->writeln('Create Babelrc file error');
-            }
-        }
+        $filePath = file_build_path(env('app_path'), '..', '.babelrc');
+        $baseFilePath = file_build_path(__DIR__, '..', 'vue', '.babelrc');
+        Tool::handle($output, __FUNCTION__, $filePath, $baseFilePath);
     }
-    // //复制数据库迁移文件
-    // public function createMigrations($output)
-    // {
-    //     $migrationsPath = env('app_path') . '..' . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'migrations';
-    //     copy_dir(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'migrations', $migrationsPath);
-    //     $output->writeln('Copy database margrations success(数据库迁移文件复制成功)');
-    // }
-    //复制静态文件
-    public function createStatic($output)
+    //复制数据库迁移文件
+    public function createMigrate($output)
     {
-        $staticPath = env('app_path') . '..' . DIRECTORY_SEPARATOR . 'resources';
-        if (is_dir($staticPath)) {
-            $output->writeln('Static file is exist');
-        } else {
-            copy_dir(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'vue' . DIRECTORY_SEPARATOR . 'resources', $staticPath);
-            $output->writeln('Copy resources success(静态文件复成功)');
-        }
+        $filePath = file_build_path(env('app_path'), '..', 'database', 'migrations');
+        $baseFilePath = file_build_path(__DIR__, '..', 'database', 'migrations');
+        Tool::handle($output, __FUNCTION__, $filePath, $baseFilePath, 'copy_dir');
     }
-    // //复制html文件
-    // public function createHtml($output)
-    // {
-    //     $staticPath = env('app_path') . '..' . DIRECTORY_SEPARATOR . 'view';
-    //     copy_dir(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'view', $staticPath);
-    //     $output->writeln('Copy Html success(Html文件复成功)');
-    // }
-    //复制公共model文件
+    //复制静态文件
+    public function createResources($output)
+    {
+        $filePath = file_build_path(env('app_path'), '..', 'resources');
+        $baseFilePath = file_build_path(__DIR__, '..', 'vue', 'resources');
+        Tool::handle($output, __FUNCTION__, $filePath, $baseFilePath, 'copy_dir');
+    }
     public function createCommonModel($output)
     {
-        $configFilePath = env('app_path') . '..' . DIRECTORY_SEPARATOR . 'application' . DIRECTORY_SEPARATOR . 'common' . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Common.php';
-        if (is_file($configFilePath)) {
-            $output->writeln('Config file is exist');
-        } else {
-            $res = copy(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'model' . DIRECTORY_SEPARATOR . 'Common.php', $configFilePath);
-            if ($res) {
-                $output->writeln('Create CommonModel file success:' . $configFilePath);
-            } else {
-                $output->writeln('Create configCommonModel file error');
-            }
-        }
+        $filePath = file_build_path(env('app_path'), '..', 'application', 'common', 'model', 'Common.php');
+        $baseFilePath = file_build_path(__DIR__, '..', 'src', 'model', 'Common.php');
+        Tool::handle($output, __FUNCTION__, $filePath, $baseFilePath);
     }
-    //复制公共model文件
-    public function createRouter($output)
-    {
-        $configFilePath = env('app_path') . '..' . DIRECTORY_SEPARATOR . 'route' . DIRECTORY_SEPARATOR . 'admin.php';
-        if (is_file($configFilePath)) {
-            $output->writeln('Route admin.php file is exist');
-        } else {
-            $res = copy(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'route' . DIRECTORY_SEPARATOR . 'admin.php', $configFilePath);
-            if ($res) {
-                $output->writeln('Create Route file success:' . $configFilePath);
-            } else {
-                $output->writeln('Create configCommonModelRouteRoute file error');
-            }
-        }
-    }
+    // //复制公共Route文件
+    // public function createRoute($output)
+    // {
+    //     $filePath = file_build_path(env('app_path'), '..', 'route', 'admin.php');
+    //     $baseFilePath = file_build_path(__DIR__, '..', 'src', 'route', 'admin.php');
+    //     Tool::handle($output, __FUNCTION__, $filePath, $baseFilePath);
+    // }
 }
