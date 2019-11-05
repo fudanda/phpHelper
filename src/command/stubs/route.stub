@@ -1,0 +1,10 @@
+<?php
+
+use think\facade\Route; // 门面类：路由
+Route::group('{%module%}', function () {
+    Route::get('$', '{%module%}/page/index'); //后台页面
+    Route::get('{%module%}/login$', '{%module%}/login/index'); //登入跳转
+    Route::post('{%module%}/login$', '{%module%}/login/login'); //登入提交
+    Route::get('{%module%}/logout$', '{%module%}/login/logout'); //登出跳转
+
+

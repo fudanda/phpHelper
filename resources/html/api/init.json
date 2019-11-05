@@ -5,7 +5,7 @@
   "homeInfo": {
     "title": "首页",
     "icon": "fa fa-home",
-    "href": "page/welcome-1.html"
+    "href": "page/welcome1.html"
   },
   "logoInfo": {
     "title": "LayuiMini",

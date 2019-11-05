@@ -10,14 +10,17 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.1.0",
         "phpoffice/phpspreadsheet": "^1.9",
         "endroid/qr-code": "^3.6",
-        "alibabacloud/client": "^1.5"
+        "alibabacloud/client": "^1.5",
+        "casbin/casbin": "^2.1",
+        "casbin/dbal-adapter": "^1.1"
     },
     "autoload": {
         "psr-4": {
             "Kuiba\\kuibaAdmin\\": "src",
+            "Kuiba\\util\\": "util",
             "Kuiba\\Baguda\\": "util/Kuiba/Baguda",
             "Kuiba\\Carlaxiaokeling\\": "util/Kuiba/Carlaxiaokeling",
             "Kuiba\\Dacang\\": "util/Kuiba/Dacang",
@@ -32,7 +35,7 @@
             "Kuiba\\Youruoli\\": "util/Kuiba/Youruoli"
         },
         "files": [
-            "util/helper.php"
+            "helper.php"
         ]
     }
 }

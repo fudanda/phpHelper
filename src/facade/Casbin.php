@@ -4,10 +4,10 @@ namespace Kuiba\kuibaAdmin\facade;
 
 use Kuiba\kuibaAdmin\Facade;
 
-class Tool extends Facade
+class Casbin extends Facade
 {
     public static function getFacadeAccessor()
     {
-        return \Kuiba\kuibaAdmin\Tool::class;
+        return \Kuiba\kuibaAdmin\Auth\Casbin::class;
     }
 }
